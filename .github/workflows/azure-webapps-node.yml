@@ -53,11 +53,11 @@ jobs:
         npm run build --if-present
         npm run test --if-present
     - name: Check for lock file
-        run: |
-      if [ ! -f package-lock.json ] && [ ! -f yarn.lock ]; then
-      echo "Error: No lock file found!"
-      exit 1
-      fi
+      run: |
+          if [ ! -f package-lock.json ] && [ ! -f yarn.lock ]; then
+          echo "Error: No lock file found!"
+          exit 1
+          fi
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v4
       with:
