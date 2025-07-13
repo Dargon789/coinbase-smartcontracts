@@ -17,8 +17,7 @@ jobs:
     executor: my-custom-executor
     steps:
       - checkout
-      - run: |
-          # echo Hello, World!
+      - run: echo "Placeholder step"
 
 workflows:
   my-custom-workflow:
