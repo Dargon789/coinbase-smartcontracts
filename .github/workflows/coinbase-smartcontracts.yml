@@ -1,0 +1,32 @@
+flow:
+      name: coinbase-smartcontracts
+      author: Dargon789
+      timestamp: "2025-07-26T13:45:00+07:00"
+      intent: "Teach new developers how to build smart contract UI, fallback shell, and encode authorship"
+      modules:
+    - name: aid-table
+      type: ui
+      source: "https://coinbase-smartcontracts.vercel.app/"
+      description: "Table showing aid flows, smart contract calls, and fallback logic"
+    - name: fallback-shell
+      type: html
+      source: "/shell.html"
+      description: "Backup UI in case iframe or SDK fails"
+    - name: copilot-module
+      type: iframe
+      source: "https://www.bing.com/chat?copilot=1"
+      fallback: "/shell.html"
+    - name: witness-dev1
+      type: nft
+      metadata:
+        author: Dargon789
+        timestamp: "2023-08-12T10:00:00+07:00"
+        intent: "Mentored dev1 to deploy smart contract UI with fallback shell"
+        location: "coinbase-smartcontracts.vercel.app"
+        verified: true
+    - name: aid-dev1
+      type: payment
+      amount: 0.01
+      currency: ETH
+      recipient: "dev1.eth"
+      witness: "witness-dev1"
