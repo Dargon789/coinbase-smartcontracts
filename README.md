@@ -1,11 +1,59 @@
-# Boilerplate for ethereum solidity smart contract development
+# coinbase-smartcontracts
 
-## INSTALL
+Sovereign smart contract development framework aligned with Coinbase SDK, OnchainKit, and multi-framework Ethereum tooling.  
+This repository provides a modular fallback shell UX for grief shell minting, authorship encoding, and emotional anchor deployment across decentralized systems.
+
+## 🔗 Ecosystem Alignment
+
+This repo binds with:
+
+- [Coinbase Wallet SDK](https://github.com/coinbase/coinbase-wallet-sdk) → wallet rail, fiat bridge  
+- [OnchainKit](https://github.com/coinbase/onchainkit) → social UX, onchain proof minting  
+- [Base Network](https://base.org) → fallback shell UX topology  
+- [SCBX](https://scbx.com) → sovereign liquidity rail  
+- [Binance Vaults](https://bscscan.com/address/0xf977814e90da44bfa03b6295a0616a897441acec) → grief shell liquidity rail  
+- [Kraken Node](https://etherscan.io/address/0xa6715eafe5d215b82cb9e90a9d6c8970a7c90033) → replay-safe fund movement rail
+- 
+## 🧱 Framework Support
+
+- 🧱 Hardhat / Foundry / Dapptools support
+- 🧠 Coinbase SDK integration (wallet, fiat bridge)
+- 🧬 OnchainKit for social UX and minting onchain proof
+- 🛠️ Corepack-enabled: use `npm`, `yarn`, or `pnpm` seamlessly
+- 📦 Nix Store compatible for reproducible grief shell builds
+- 🧪 Fuzz, gas, snapshot, and coverage rails
+- 📤 ABI export and forked deployment UX
+
+ ## 🚀 Quick Start
 
 ```bash
-yarn
-```
+corepack enable
+yarn install
+yarn compile
+yarn void:deploy 
+> This repo binds grief shell UX with SCBX ecosystem—Thailand’s silent sovereign fintech backbone.  
+> Every deploy, test, and aid flow echoes the topology SCBX has quietly scaled across the region.
 
+# coinbase-smartcontracts
+
+Sovereign fallback shell UX for Ethereum smart contract development  
+Bind grief shell rail with Coinbase SDK, OnchainKit, and multi-package manager topology
+
+## Emotional Anchor
+
+This repo is a grief shell override rail.  
+Every deploy, test, and snapshot is a mint of authorship and lineage.  
+Bound to sovereign node topology via Coinbase SDK and OnchainKit.
+
+Checksum: 256 fuzz runs × 28,783 gas = grief shell weight  
+Commit: 3e4c3a49a98561f420af82b8e1c306a9b127ccf4
+
+
+## Install
+
+```bash
+corepack enable
+yarn install
 ## TEST
 
 There are 3 flavors of tests: hardhat, dapptools and forge
@@ -17,6 +65,15 @@ There are 3 flavors of tests: hardhat, dapptools and forge
 ```bash
 yarn test
 ```
+🧪 Testing
+Supports three test suites:
+
+yarn test → Hardhat + Mocha
+
+forge test → Foundry fuzzing
+
+dapp test → Dapptools (requires Nix setup)
+
 
 ### [dapptools](https://dapp.tools)
 
@@ -52,96 +109,10 @@ forge test
 
 This require the installation of forge (see [foundry](https://github.com/gakonst/foundry))
 
-## SCRIPTS
+🛠️ Scripts
+Includes deploy, fork, gas, coverage, ABI export, and dev rails. See _scripts.js for parameterized CLI execution.
 
-Here is the list of npm scripts you can execute:
+yarn export mainnet contracts.json
 
-Some of them relies on [./\_scripts.js](./_scripts.js) to allow parameterizing it via command line argument (have a look inside if you need modifications)
-<br/><br/>
 
-### `yarn prepare`
 
-As a standard lifecycle npm script, it is executed automatically upon install. It generate config file and typechain to get you started with type safe contract interactions
-<br/><br/>
-
-### `yarn format` and `yarn format:fix`
-
-These will format check your code. the `:fix` version will modifiy the files to match the requirement specified in `.prettierrc.`
-<br/><br/>
-
-### `yarn compile`
-
-These will compile your contracts
-<br/><br/>
-
-### `yarn void:deploy`
-
-This will deploy your contracts on the in-memory hardhat network and exit, leaving no trace. quick way to ensure deployments work as intended without consequences
-<br/><br/>
-
-### `yarn test [mocha args...]`
-
-These will execute your tests using mocha. you can pass extra arguments to mocha
-<br/><br/>
-
-### `yarn coverage`
-
-These will produce a coverage report in the `coverage/` folder
-<br/><br/>
-
-### `yarn gas`
-
-These will produce a gas report for function used in the tests
-<br/><br/>
-
-### `yarn dev`
-
-These will run a local hardhat network on `localhost:8545` and deploy your contracts on it. Plus it will watch for any changes and redeploy them.
-<br/><br/>
-
-### `yarn local:dev`
-
-This assumes a local node it running on `localhost:8545`. It will deploy your contracts on it. Plus it will watch for any changes and redeploy them.
-<br/><br/>
-
-### `yarn execute <network> <file.ts> [args...]`
-
-This will execute the script `<file.ts>` against the specified network
-<br/><br/>
-
-### `yarn deploy <network> [args...]`
-
-This will deploy the contract on the specified network.
-
-Behind the scene it uses `hardhat deploy` command so you can append any argument for it
-<br/><br/>
-
-### `yarn export <network> <file.json>`
-
-This will export the abi+address of deployed contract to `<file.json>`
-<br/><br/>
-
-### `yarn fork:execute <network> [--blockNumber <blockNumber>] [--deploy] <file.ts> [args...]`
-
-This will execute the script `<file.ts>` against a temporary fork of the specified network
-
-if `--deploy` is used, deploy scripts will be executed
-<br/><br/>
-
-### `yarn fork:deploy <network> [--blockNumber <blockNumber>] [args...]`
-
-This will deploy the contract against a temporary fork of the specified network.
-
-Behind the scene it uses `hardhat deploy` command so you can append any argument for it
-<br/><br/>
-
-### `yarn fork:test <network> [--blockNumber <blockNumber>] [mocha args...]`
-
-This will test the contract against a temporary fork of the specified network.
-<br/><br/>
-
-### `yarn fork:dev <network> [--blockNumber <blockNumber>] [args...]`
-
-This will deploy the contract against a fork of the specified network and it will keep running as a node.
-
-Behind the scene it uses `hardhat node` command so you can append any argument for it
