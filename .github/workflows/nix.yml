@@ -34,9 +34,6 @@ jobs:
       - uses: DeterminateSystems/determinate-nix-action@v3
       - uses: actions/checkout@v5
 
-      - name: Update flake.lock
-        run: nix flake update
-
       - name: Activate nix env
         run: nix develop -c echo Ok
 
