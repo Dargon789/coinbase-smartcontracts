@@ -14,8 +14,8 @@ currently being supported with security updates.
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+We take all security bugs in this project seriously. If you find a vulnerability, we would like to know about it so we can take steps to address it as quickly as possible.
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+Please report security vulnerabilities by using the [**"Report a vulnerability"** button](https://github.com/coinbase/coinbase-smartcontracts/security/advisories/new) on the Security tab.
+
+You can expect an acknowledgment of your report within 48 hours. We will send a more detailed response within 72 hours to let you know our plan for addressing the vulnerability. We appreciate your help in disclosing the issue to us responsibly.
