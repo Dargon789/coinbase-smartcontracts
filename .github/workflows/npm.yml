@@ -173,11 +173,24 @@ jobs:
               sudo apt-get update -y && sudo apt-get install -y unzip
             fi
             unzip -o "${FILE_PREFIX}.zip" -d "$ARTIFACT_DIR/tmp"
-            BIN="$ARTIFACT_DIR/tmp/forge.exe"
+            # Determine binary name based on platform or by inspecting extracted files
+            if [[ "${{ matrix.os }}" == "windows" ]]; then
+              BIN=$(find "$ARTIFACT_DIR/tmp" -type f -name "forge.exe" | head -n 1)
+            else
+              BIN=$(find "$ARTIFACT_DIR/tmp" -type f -name "forge" | head -n 1)
+              # Fallback: if not found, try to find any executable file
+              if [[ -z "$BIN" ]]; then
+                BIN=$(find "$ARTIFACT_DIR/tmp" -type f -perm -u=x | head -n 1)
+              fi
+            fi
           else
             echo "Extracting ${FILE_PREFIX}.tar.gz"
             tar -xzf "${FILE_PREFIX}.tar.gz" -C "$ARTIFACT_DIR/tmp"
-            BIN="$ARTIFACT_DIR/tmp/forge"
+            BIN=$(find "$ARTIFACT_DIR/tmp" -type f -name "forge" | head -n 1)
+            # Fallback: if not found, try to find any executable file
+            if [[ -z "$BIN" ]]; then
+              BIN=$(find "$ARTIFACT_DIR/tmp" -type f -perm -u=x | head -n 1)
+            fi
           fi
 
           echo "Staging binary $BIN into @foundry-rs/forge-${{ matrix.os }}-${{ matrix.arch }}"
