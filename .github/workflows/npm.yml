@@ -158,6 +158,25 @@ jobs:
           printf 'RELEASE_VERSION=%s\n' "$RELEASE_VERSION" >>"$GITHUB_OUTPUT"
 
       - name: Stage Binary Into Package
+        run: |
+          set -euo pipefail
+          # Only allow specific, non-executable artifact files to be staged
+          for file in "$ARTIFACT_DIR"/foundry_*; do
+            [ -e "$file" ] || continue
+            case "$file" in
+              *.tar.gz|*.zip) ;;
+              *)
+                echo "Refusing to package unexpected file type: $file" >&2
+                exit 1
+                ;;
+            esac
+            if file "$file" | grep -E 'shell script|executable|ELF' >/dev/null; then
+              echo "Refusing to package executable/script file: $file" >&2
+              exit 1
+            fi
+            # Only copy to npm dir AFTER install/build
+            cp "$file" ./npm/
+          done
         working-directory: ./npm
         env:
           RELEASE_VERSION: ${{ steps.release-version.outputs.RELEASE_VERSION }}
