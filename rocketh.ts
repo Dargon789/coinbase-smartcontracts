@@ -12,7 +12,7 @@ export const config = {
 			tags: ['local', 'testnet'],
 		},
 		sepolia: {
-			tags: ['live', 'testner'],
+			tags: ['live', 'testnet'],
 		},
 		default: {
 			tags: ['live'],
