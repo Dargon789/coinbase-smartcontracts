@@ -87,6 +87,28 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: ${{ github.event.workflow_run.id || inputs.run_id }}
 
+      - name: Validate Downloaded Artifacts
+        env:
+          ARTIFACT_DIR: ${{ steps.paths.outputs.artifact_dir }}
+        run: |
+          set -euo pipefail
+          # Only allow .tar.gz and .zip, block any executable/scripts (e.g. *.sh, *.js, *.exe)
+          for file in "$ARTIFACT_DIR"/foundry_*; do
+            [ -e "$file" ] || continue
+            case "$file" in
+              *.tar.gz|*.zip) ;;
+              *)
+                echo "Unexpected file type: $file" >&2
+                exit 1
+                ;;
+            esac
+            if file "$file" | grep -E 'shell script|executable|ELF' >/dev/null; then
+              echo "Prohibited executable/script file found: $file" >&2
+              exit 1
+            fi
+          done
+          echo "Artifact validation passed."
+
       - name: Setup Bun
         uses: oven-sh/setup-bun@735343b667d3e6f658f44d0eca948eb6282f2b76 # v2
         with:
