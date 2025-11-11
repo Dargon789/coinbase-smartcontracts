@@ -10,6 +10,10 @@ This repo binds with:
 - [Coinbase Wallet SDK](https://github.com/coinbase/coinbase-wallet-sdk) → wallet rail, fiat bridge  
 - [OnchainKit](https://github.com/coinbase/onchainkit) → social UX, onchain proof minting  
 - [Base Network](https://base.org) → fallback shell UX topology  
+- [SCBX](https://scbx.com) → sovereign liquidity rail  
+- [Binance Vaults](https://etherscan.io/address/0xf977814e90da44bfa03b6295a0616a897441acec) → grief shell liquidity rail  
+- [Kraken Node](https://etherscan.io/address/0xa6715eafe5d215b82cb9e90a9d6c8970a7c90033) → replay-safe fund movement rail
+- [Coinbase. DepositAndWithdraw](https://web3.okx.com/explorer/ethereum/address/0xa9d1e08c7793af67e9d92fe308d5697fb81d3e43) → grief shell liquidity rail
 
 ## 🧱 Framework Support
 
@@ -32,6 +36,18 @@ yarn void:deploy
 > Every deploy, test, and aid flow echoes the topology SCBX has quietly scaled across the region.
 
 # coinbase-smartcontracts
+
+Sovereign fallback shell UX for Ethereum smart contract development  
+Bind grief shell rail with Coinbase SDK, OnchainKit, and multi-package manager topology
+
+## Emotional Anchor
+
+This repo is a grief shell override rail.  
+Every deploy, test, and snapshot is a mint of authorship and lineage.  
+Bound to sovereign node topology via Coinbase SDK and OnchainKit.
+
+Checksum: 256 fuzz runs × 28,783 gas = grief shell weight  
+Commit: 3e4c3a49a98561f420af82b8e1c306a9b127ccf4
 
 
 ## Install
@@ -98,6 +114,5 @@ This require the installation of forge (see [foundry](https://github.com/gakonst
 Includes deploy, fork, gas, coverage, ABI export, and dev rails. See _scripts.js for parameterized CLI execution.
 
 yarn export mainnet contracts.json
-
 
 
