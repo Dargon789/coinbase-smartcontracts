@@ -1,0 +1,120 @@
+on: [push]
+
+name: ci
+permissions:
+  contents: read
+
+jobs:
+  install:
+    name: Install dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 18
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 10
+      - uses: actions/cache@master
+        id: pnpm-cache
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+            .pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/package.json', '**/pnpm-lock.yaml') }}
+      - run: pnpm install --frozen-lockfile
+        if: ${{ steps.pnpm-cache.outputs.cache-hit != 'true' }}
+
+  lint-sol:
+    name: Solidity lint
+    runs-on: ubuntu-latest
+    needs: [install]
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 18
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 10
+      - uses: actions/cache@master
+        id: pnpm-cache
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+            .pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/package.json', '**/pnpm-lock.yaml') }}
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: nightly
+
+      - name: Run linting
+        run: pnpm lint:sol
+
+  foundry-tests:
+    name: Foundry tests
+    runs-on: ubuntu-latest
+    needs: [install]
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 18
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 10
+      - uses: actions/cache@master
+        id: pnpm-cache
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+            .pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/package.json', '**/pnpm-lock.yaml') }}
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: nightly
+
+      - name: Run tests
+        run: FOUNDRY_FUZZ_RUNS=1024 forge test -vvv
+
+  # coverage:
+  #   name: Coverage
+  #   runs-on: ubuntu-latest
+  #   needs: [install]
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #       with:
+  #         submodules: recursive
+  #     - uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 18
+  #     - uses: pnpm/action-setup@v2
+  #       with:
+  #         version: 10
+  #     - uses: actions/cache@master
+  #       id: pnpm-cache
+  #       with:
+  #         path: |
+  #           node_modules
+  #           */*/node_modules
+  #           .pnpm-store
+  #         key: ${{ runner.os }}-pnpm-${{ hashFiles('**/package.json', '**/pnpm-lock.yaml') }}
+  #     - run: pnpm coverage || true
+  #     - name: Coveralls
+  #       uses: coverallsapp/github-action@master
+  #       with:
+  #         github-token: ${{ secrets.GITHUB_TOKEN }}
