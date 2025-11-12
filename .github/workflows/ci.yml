@@ -27,7 +27,6 @@ jobs:
             .pnpm-store
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/package.json', '**/pnpm-lock.yaml') }}
       - run: pnpm install --frozen-lockfile
-        if: ${{ steps.pnpm-cache.outputs.cache-hit != 'true' }}
 
   lint-sol:
     name: Solidity lint
