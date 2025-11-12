@@ -95,7 +95,7 @@ const config = {
 			addNetworksFromEnv({
 				hardhat: {
 					initialBaseFeePerGas: process.env.HARDHAT_FORK ? 1 : 0,
-					allowUnlimitedContractSize: process.env.HARDHAT_FORK ? false : true,
+					allowUnlimitedContractSize: !process.env.HARDHAT_FORK,
 				},
 			}),
 		),
