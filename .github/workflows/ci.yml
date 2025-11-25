@@ -22,7 +22,8 @@ jobs:
           submodules: recursive
 
       - name: Install Foundry
-        uses: foundry-rs/foundry-toolchain@v1
+        # Pinned for reproducible CI runs; update deliberately when upgrading Foundry
+        uses: foundry-rs/foundry-toolchain@b41c5d15e2e5a15e599e33e50e54f9b89e0e7a34
 
       - name: Show Forge version
         run: forge --version
