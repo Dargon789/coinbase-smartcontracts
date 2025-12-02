@@ -109,6 +109,46 @@ jobs:
           done
           echo "Artifact validation passed."
 
+      - name: Securely Extract Artifacts
+        env:
+          ARTIFACT_DIR: ${{ steps.paths.outputs.artifact_dir }}
+        run: |
+          set -euo pipefail
+          EXTRACTED="$ARTIFACT_DIR/extracted"
+          mkdir -p "$EXTRACTED"
+          for file in "$ARTIFACT_DIR"/foundry_*; do
+            [ -e "$file" ] || continue
+            case "$file" in
+              *.tar.gz)
+                tar -xzf "$file" -C "$EXTRACTED"
+                ;;
+              *.zip)
+                unzip -d "$EXTRACTED" "$file"
+                ;;
+              *) continue ;;
+            esac
+          done
+          # Ensure no extracted file is symlink or escapes $EXTRACTED
+          find "$EXTRACTED" -type l -print -exec bash -c 'echo "Symlink found: $0" >&2' {} \; -exec exit 1 \;
+          while IFS= read -r extracted_file; do
+            # Normalize path
+            rel=$(realpath --relative-to="$EXTRACTED" "$extracted_file")
+            case "$rel" in
+              *".."*|/*)
+                echo "Path escape detected in $extracted_file" >&2
+                exit 1
+                ;;
+            esac
+            # Block dangerous file extensions
+            case "$extracted_file" in
+              *.sh|*.js|*.exe|*.bat)
+                echo "Prohibited file type in extracted artifact: $extracted_file" >&2
+                exit 1
+                ;;
+            esac
+          done < <(find "$EXTRACTED" -type f)
+          echo "Artifact extraction and content validation passed."
+
       - name: Setup Bun
         uses: oven-sh/setup-bun@735343b667d3e6f658f44d0eca948eb6282f2b76 # v2
         with:
