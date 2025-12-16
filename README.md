@@ -28,7 +28,7 @@ make test
 
 ## Features
 
-For Foundry specific features, refer to:
+For Foundry-specific features, refer to:
 
 - [repository](https://github.com/foundry-rs/foundry)
 - [cheat codes](https://github.com/foundry-rs/foundry/blob/master/forge/README.md#cheat-codes)
