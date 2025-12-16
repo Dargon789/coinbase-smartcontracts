@@ -40,7 +40,7 @@ This template comes with an additional set of features explained below.
 
 Included libraries in [`lib`](lib/):
 
-- [ds-test](https://github.com/dapphub/ds-test) - Test framework for DappTools
+- [forge-std](https://github.com/foundry-rs/forge-std) - Foundry's standard library, including testing utilities
 - [openzeppelin-contracts](https://github.com/OpenZeppelin/openzeppelin-contracts) - OpenZeppelin contracts library
 - [mockprovider](https://github.com/cleanunicorn/mockprovider) - Mocking library
 
