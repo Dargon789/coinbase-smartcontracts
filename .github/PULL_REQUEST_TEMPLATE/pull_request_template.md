@@ -20,8 +20,7 @@ A list of issues it fixes or implements as described [here](https://docs.github.
 
 - [ ] Link issues
 - [ ] Link projects
-- [ ] Update tests
-- [ ] Update code
 - [ ] Comment code
+- [ ] Update tests
 - [ ] Test locally
 - [ ] Update changelog
