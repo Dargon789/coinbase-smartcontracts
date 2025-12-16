@@ -46,7 +46,7 @@ Included libraries in [`lib`](lib/):
 
 ### GitHub Actions
 
-The template already comes with GitHub actions configured, which means that the project will be tested on every `push` and `pull request`.
+The template already comes with GitHub Actions configured, which means that the project will be tested on every `push` and `pull request`.
 
 Check the [project's actions](https://github.com/cleanunicorn/ethereum-smartcontract-template/actions) for an example.
 
