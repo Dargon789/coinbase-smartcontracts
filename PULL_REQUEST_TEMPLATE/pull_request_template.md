@@ -24,4 +24,4 @@ A list of issues it fixes or implements as described [here](https://docs.github.
 - [ ] Update code
 - [ ] Comment code
 - [ ] Test locally
-- [ ] Update changelog
+- Update changelog
