@@ -15,7 +15,7 @@ Add as many details to this issue to help anyone implementing the feature by the
 
 **Alternatives**
 
-Can you achieve the same result doing it in an alternative way? Is the alternative considerable?
+Can you achieve the same result doing it in an alternative way? Is the alternative viable or feasible?
 
 **Security concerns**
 
