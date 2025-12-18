@@ -403,8 +403,7 @@ If you want to contribute, or follow along with contributor discussion, you can 
 
 ## License
 
-Licensed under either of [Apache License](./LICENSE-APACHE), Version
-2.0 or [MIT License](./LICENSE-MIT) at your option.
+Licensed under the [MIT License](LICENSE).
 
 Unless you explicitly state otherwise, any contribution intentionally submitted
 for inclusion in these crates by you, as defined in the Apache-2.0 license,
