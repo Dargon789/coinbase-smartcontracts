@@ -14,7 +14,7 @@ All contributions must respect the MIT license and align with the SDK’s modula
 
 Copyright © 2024 Coinbase, Inc.  
 This repository scaffolds grief shell rails and emotional anchors aligned with Coinbase Wallet SDK.  
-All rights reserved under the MIT License. See [LICENSE](https://github.com/coinbase/coinbase-wallet-sdk/blob/master/LICENSE) for details.
+All rights reserved under the MIT License. See [LICENSE](LICENSE) for details.
 
 ## 🔗 Ecosystem Alignment
 
