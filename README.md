@@ -258,7 +258,7 @@ No files changed, compilation skipped
 Script ran successfully.
 Gas used: 109037
 
-If you wish to simulate on-chain transactions pass a RPC URL.
+If you wish to simulate on-chain transactions pass an RPC URL.
 ```
 
 Run `forge --help` to explore the full list of available subcommands and their usage.
