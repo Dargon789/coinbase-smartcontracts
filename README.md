@@ -91,7 +91,7 @@ dapp test → Dapptools (requires Nix setup)
 
 ### Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.
 
-[getfoundry.sh](https://getfoundry.sh/)   [https://github.com/Dargon789/foundry#]
+[getfoundry.sh](https://getfoundry.sh/) | [GitHub](https://github.com/foundry-rs/foundry)
 
 &nbsp;
 
