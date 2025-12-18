@@ -111,9 +111,49 @@ jobs:
           done
           echo "Artifact validation passed."
 
-      - name: Securely Extract Artifacts
-        env:
-          ARTIFACT_DIR: ${{ steps.paths.outputs.artifact_dir }}
+      env:
+        ARTIFACT_DIR: ${{ steps.paths.outputs.artifact_dir }}
+        SAFE_EXTRACT_DIR: ${{ runner.temp }}/validated_extracted_artifacts
+      run: |
+        set -euo pipefail
+        mkdir -p "$SAFE_EXTRACT_DIR"
+        echo "Extracting only validated .tar.gz and .zip artifacts to $SAFE_EXTRACT_DIR"
+        shopt -s nullglob
+        for file in "$ARTIFACT_DIR"/foundry_*.tar.gz "$ARTIFACT_DIR"/foundry_*.zip; do
+          [ -e "$file" ] || continue
+          fname=$(basename "$file")
+          tmpdir="$SAFE_EXTRACT_DIR/${fname%.*}_extract"
+          mkdir -p "$tmpdir"
+          if [[ "$file" == *.tar.gz ]]; then
+            # Pre-inspect: tar --list, abort if any .. or absolute path
+            if tar -tzf "$file" | grep -E '(^|/)\.\.(/|$)|^/' >/dev/null; then
+              echo "Unsafe paths detected in $file (path traversal risk)" >&2
+              exit 1
+            fi
+            tar --extract --gunzip --file="$file" --directory="$tmpdir" --no-same-owner --no-same-permissions
+          elif [[ "$file" == *.zip ]]; then
+            # Pre-inspect: zipinfo -1, abort if any .. or absolute path
+            if zipinfo -1 "$file" | grep -E '(^|/)\.\.(/|$)|^/' >/dev/null; then
+              echo "Unsafe paths detected in $file (path traversal risk)" >&2
+              exit 1
+            fi
+            unzip -q "$file" -d "$tmpdir"
+          else
+            echo "Unknown artifact file type: $file" >&2
+            exit 1
+          fi
+          # Check for symlinks and device files
+          if find "$tmpdir" -type l | grep .; then
+            echo "Symlinks present in extracted files from $file, aborting." >&2
+            exit 1
+          fi
+          if find "$tmpdir" -type b -o -type c | grep .; then
+            echo "Block/character device files present in extracted files from $file, aborting." >&2
+            exit 1
+          fi
+          echo "Extracted $file safely"
+        done
+        echo "All artifacts securely extracted into $SAFE_EXTRACT_DIR"
         run: |
           set -euo pipefail
           EXTRACTED="$ARTIFACT_DIR/extracted"
@@ -172,24 +212,19 @@ jobs:
 
       # Securely copy *only* required, validated artifact files into build directory (if needed)
       - name: Copy Validated Artifacts to Build Directory
+        env:
+          SAFE_EXTRACT_DIR: ${{ runner.temp }}/validated_extracted_artifacts
         run: |
           set -euo pipefail
-          # Suppose only .tar.gz/.zip allowed, and must match expected naming
-          # If artifact inclusion is NOT needed for build, skip this step entirely
-          ARTIFACT_DIR="${{ steps.paths.outputs.artifact_dir }}"
+          # Only use files from secure extraction area (not the raw artifact dir)
           BUILD_ARTIFACT_DIR="./npm/validated_artifacts"
           mkdir -p "$BUILD_ARTIFACT_DIR"
           shopt -s nullglob
-          for file in "$ARTIFACT_DIR"/foundry_*.tar.gz "$ARTIFACT_DIR"/foundry_*.zip; do
-            # Copy only non-executable, double-check MIME type
-            if file "$file" | grep -E 'gzip compressed data|Zip archive data' >/dev/null; then
-              cp "$file" "$BUILD_ARTIFACT_DIR/"
-            else
-              echo "Artifact $file is not a valid .tar.gz/.zip per MIME type" >&2
-              exit 1
-            fi
+          # Copy extracted files, not archives, and only the types you expect to include
+          find "$SAFE_EXTRACT_DIR" -type f -name "*.bin" -o -name "*.json" | while read -r file; do
+            cp "$file" "$BUILD_ARTIFACT_DIR/"
           done
-          echo "Copied validated artifacts to $BUILD_ARTIFACT_DIR"
+          echo "Copied securely extracted and validated artifact files to $BUILD_ARTIFACT_DIR"
 
       - name: Set Isolated Artifact Directory
         id: release-version
