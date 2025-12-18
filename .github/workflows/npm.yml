@@ -63,6 +63,8 @@ jobs:
         with:
           persist-credentials: false
 
+# === Build all source BEFORE any artifacts are downloaded ===
+
       - name: Set Isolated Artifact Directory
         id: paths
         run: |
@@ -168,7 +170,7 @@ jobs:
         working-directory: ./npm
         run: bun run build
 
-      - name: Derive RELEASE_VERSION
+      - name: Set Isolated Artifact Directory
         id: release-version
         working-directory: ./npm
         env:
