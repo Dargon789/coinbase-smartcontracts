@@ -379,7 +379,7 @@ Foundry is highly configurable, allowing you to tailor it to your needs. Configu
 
 ---
 
-You can find additional [setup and configurations guides](https://getfoundry.sh/config/overview) in the [Foundry Docs][foundry-docs] and in the [config crate](./crates/config/README.md):
+You can find additional [setup and configuration guides](https://getfoundry.sh/config/overview) in the [Foundry Docs][foundry-docs] and in the [config crate](./crates/config/README.md):
 
 - [Configuring with `foundry.toml`](https://getfoundry.sh/config/overview)
 - [Setting up VSCode][vscode-setup]
