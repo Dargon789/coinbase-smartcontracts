@@ -387,7 +387,7 @@ You can find additional [setup and configuration guides](https://getfoundry.sh/c
 
 ## Contributing
 
-See our [contributing guidelines](./CONTRIBUTING.md).
+See our [contributing guidelines](https://github.com/coinbase/coinbase-wallet-sdk/blob/master/CONTRIBUTING.md).
 
 ## Getting Help
 
