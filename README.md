@@ -98,7 +98,7 @@ pnpm compile:watch
 
 - on a network of your choice
 
-  Just make sure you have your .env.local setup, see [.env](.env)
+  Just make sure you have your .env.local setup. You can use `.env.example` as a template.
 
   ```bash
   pnpm run deploy <network>
