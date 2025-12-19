@@ -54,13 +54,7 @@ Commit: 3e4c3a49a98561f420af82b8e1c306a9b127ccf4
 
  ## 🚀 Quick Start
 
-```bash
 corepack enable & corepack use pnpm@10
-### Compile your contracts
-
-```bash
-pnpm compile
-```
 
 ## 🧾 Test your contracts
 
