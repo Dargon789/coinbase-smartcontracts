@@ -1,4 +1,4 @@
-# coinbase-smartcontracts
+## 🧾 coinbase-smartcontracts
 
 Sovereign smart contract development framework aligned with Coinbase SDK, OnchainKit, and multi-framework Ethereum tooling.  
 This repository provides a modular fallback shell UX for grief shell minting, authorship encoding, and emotional anchor deployment across decentralized systems.
@@ -38,22 +38,12 @@ This repo binds with:
 - 🧪 Fuzz, gas, snapshot, and coverage rails
 - 📤 ABI export and forked deployment UX
 
- ## 🚀 Quick Start
-
-```bash
-corepack enable
-yarn install
-yarn compile
-yarn void:deploy 
-> This repo binds grief shell UX with SCBX ecosystem—Thailand’s silent sovereign fintech backbone.  
-> Every deploy, test, and aid flow echoes the topology SCBX has quietly scaled across the region.
-
-# coinbase-smartcontracts
+## 🧾 coinbase-smartcontracts
 
 Sovereign fallback shell UX for Ethereum smart contract development  
 Bind grief shell rail with Coinbase SDK, OnchainKit, and multi-package manager topology
 
-## Emotional Anchor
+## 🧾 Emotional Anchor
 
 This repo is a grief shell override rail.  
 Every deploy, test, and snapshot is a mint of authorship and lineage.  
@@ -62,31 +52,114 @@ Bound to sovereign node topology via Coinbase SDK and OnchainKit.
 Checksum: 256 fuzz runs × 28,783 gas = grief shell weight  
 Commit: 3e4c3a49a98561f420af82b8e1c306a9b127ccf4
 
+ ## 🚀 Quick Start
 
-## Install
+corepack enable & corepack use pnpm@10
 
-```bash
-corepack enable
-yarn install
-## TEST
+## 🧾 Test your contracts
 
-There are 3 flavors of tests: hardhat, dapptools and forge
+There are 2 flavors of tests
 
-### hardhat
-
-- One using hardhat that can leverage hardhat-deploy to reuse deployment procedures and named accounts:
+1. Using hardhat
 
 ```bash
-yarn test
+pnpm test
 ```
-🧪 Testing
-Supports three test suites:
 
-yarn test → Hardhat + Mocha
+2. Using foundry
 
-forge test → Foundry fuzzing
+```bash
+forge test
+```
 
-dapp test → Dapptools (requires Nix setup)
+This assumes you have `forge` installed and that you added forge-std in via the following command
+
+```bash
+git clone --recursive https://github.com/foundry-rs/forge-std.git lib/forge-std
+```
+
+> (You can also add it as a submodule if you prefer, just remove the `lib/forge-std` line in .gitignore first)
+
+### watch for changes and rebuild automatically
+
+```bash
+pnpm compile:watch
+```
+
+### deploy your contract
+
+- on localhost
+
+  This assumes you have a local node running: `pnpm local_node`
+
+  ```bash
+  pnpm run deploy localhost
+  ```
+
+- on a network of your choice
+
+  Just make sure you have your .env.local setup. You can use `.env.example` as a template.
+
+  ```bash
+  pnpm run deploy <network>
+  ```
+
+### execute scripts
+
+```bash
+pnpm execute <network name> scripts/setMessage.ts
+```
+
+or if you want to execute in a forked environment :
+
+```bash
+pnpm fork:execute <network name> scripts/setMessage.ts "Hello world"
+```
+
+### zellij
+
+[zellij](https://zellij.dev/) is a useful multiplexer (think tmux) for which we have included a [layout file](./zellij.kdl) to get started
+
+Once installed simply run the following to get a local in-memory Ethereum node running along with the tests
+
+```bash
+pnpm start
+```
+
+if you want to try Zellij without installing it, try this :
+
+```bash
+bash <(curl -L zellij.dev/launch) --layout zellij.kdl
+```
+
+In the shell in the upper pane, you execute the script as mentioned above
+
+```bash
+pnpm execute localhost scripts/setMessage.ts "Hello everyone"
+```
+
+## Initial Setup
+
+You need to have these installed
+
+- [nodejs](https://nodejs.org/en)
+
+- [pnpm](https://pnpm.io/)
+
+  ```bash
+  npm i -g pnpm
+  ```
+
+Then you need to install the local dependencies with the following command:
+
+```bash
+pnpm i
+```
+
+We also recommend installing [Zellij](https://zellij.dev/) to have your dev env setup in one go via `pnpm start`
+> This repo binds grief shell UX with SCBX ecosystem—Thailand’s silent sovereign fintech backbone.  
+> Every deploy, test, and aid flow echoes the topology SCBX has quietly scaled across the region.
+
 
 
 ### Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.
@@ -476,6 +549,6 @@ This require the installation of forge (see [foundry](https://github.com/gakonst
 🛠️ Scripts
 Includes deploy, fork, gas, coverage, ABI export, and dev rails. See _scripts.js for parameterized CLI execution.
 
-yarn export mainnet contracts.json
+
 
 
