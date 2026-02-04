@@ -19,7 +19,7 @@ ENV NODE_ENV=production
 # Run app when the container launches
 CMD ["npm", "start"]
 # Use an official Python runtime as a parent image
-FROM python:3.9-slim
+FROM python:3.14.2-slim
 
 # Set the working directory in the container
 WORKDIR /app
