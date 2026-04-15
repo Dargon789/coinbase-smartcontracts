@@ -8,15 +8,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@wagmi/connectors": "latest",
-    "@wagmi/core": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "viem": "latest"
+    "viem": "latest",
+    "@wagmi/connectors": "latest",
+    "@wagmi/core": "latest"
   },
   "devDependencies": {
-    "@wagmi/cli": "latest",
     "typescript": "latest",
-    "vite": "latest"
+    "vite": "latest",
+    "@wagmi/cli": "latest"
   }
 }

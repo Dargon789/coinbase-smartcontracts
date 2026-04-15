@@ -106,17 +106,17 @@
     }
   },
   "dependencies": {
+    "use-sync-external-store": "1.4.0",
     "@wagmi/connectors": "workspace:*",
-    "@wagmi/core": "workspace:*",
-    "use-sync-external-store": "1.4.0"
+    "@wagmi/core": "workspace:*"
   },
   "devDependencies": {
+    "react": "catalog:",
+    "react-dom": "catalog:",
     "@tanstack/react-query": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "@types/use-sync-external-store": "^0.0.6",
-    "react": "catalog:",
-    "react-dom": "catalog:"
+    "@types/use-sync-external-store": "^0.0.6"
   },
   "contributors": [
     "awkweb.eth <t@wevm.dev>",
