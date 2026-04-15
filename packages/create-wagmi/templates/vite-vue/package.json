@@ -9,13 +9,13 @@
   },
   "dependencies": {
     "@tanstack/vue-query": "latest",
+    "@wagmi/vue": "latest",
     "viem": "latest",
-    "vue": "latest",
-    "@wagmi/vue": "latest"
+    "vue": "latest"
   },
   "devDependencies": {
-    "vite": "latest",
     "@vitejs/plugin-vue": "latest",
+    "vite": "latest",
     "vue-tsc": "latest"
   }
 }

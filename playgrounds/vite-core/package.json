@@ -8,17 +8,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@wagmi/connectors": "workspace:*",
+    "@wagmi/core": "workspace:*",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "viem": "2.*",
-    "@wagmi/connectors": "workspace:*",
-    "@wagmi/core": "workspace:*"
+    "viem": "2.*"
   },
   "devDependencies": {
-    "buffer": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "vite": "catalog:",
-    "@vitejs/plugin-react": "catalog:"
+    "@vitejs/plugin-react": "catalog:",
+    "buffer": "catalog:",
+    "vite": "catalog:"
   }
 }

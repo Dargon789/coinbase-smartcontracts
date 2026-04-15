@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@tanstack/vue-query": "catalog:",
-    "vue": "catalog:",
-    "@wagmi/vue": "workspace:*"
+    "@wagmi/vue": "workspace:*",
+    "vue": "catalog:"
   }
 }

@@ -9,18 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-query": "latest",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "@tanstack/react-query": "latest",
     "viem": "latest",
     "wagmi": "latest"
   },
   "devDependencies": {
-    "typescript": "latest",
-    "@types/node": "^24.12.2",
+    "@types/node": "^24.10.1",
     "@types/react": "latest",
     "@types/react-dom": "latest",
-    "@wagmi/cli": "latest"
+    "@wagmi/cli": "latest",
+    "typescript": "latest"
   }
 }

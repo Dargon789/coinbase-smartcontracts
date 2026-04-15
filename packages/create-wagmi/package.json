@@ -34,13 +34,13 @@
   },
   "dependencies": {
     "cac": "^6.7.14",
-    "cross-spawn": "^7.0.6",
-    "picocolors": "^1.1.1",
+    "cross-spawn": "^7.0.3",
+    "picocolors": "^1.0.0",
     "prompts": "^2.4.2"
   },
   "devDependencies": {
     "@types/cross-spawn": "^6.0.6",
-    "@types/node": "^24.12.2",
+    "@types/node": "^24.5.1",
     "@types/prompts": "^2.4.9"
   },
   "contributors": [
