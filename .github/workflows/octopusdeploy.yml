@@ -51,7 +51,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@f95db51fddba0c2d1ec667646a06c2ce06100226 # v3.0.0
+        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3.12.0
 
       - name: Log in to the Container registry
         uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
@@ -62,14 +62,14 @@ jobs:
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+        uses: docker/metadata-action@ed95091677497158a9ff38b314264cd965388d5e
         with:
           images: ${{ env.DOCKER_REGISTRY }}/${{ github.repository }}
           tags: type=semver,pattern={{version}},value=v1.0.0-{{sha}}
 
       - name: Build and push Docker image
         id: push
-        uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
+        uses: docker/build-push-action@64c9b141502b80dbbd71e008a0130ad330f480f8
         with:
           context: .
           push: true
@@ -97,7 +97,7 @@ jobs:
 
       - name: Create Release
         id: create_release
-        uses: OctopusDeploy/create-release-action@fea7e7b45c38c021b6bc5a14bd7eaa2ed5269214 #v3.2.2
+        uses: OctopusDeploy/create-release-action@617cac6e20b9c00741c762637a53bd7b002d4198 #v4.0.0
         with:
           project: '${{ env.OCTOPUS_PROJECT }}'
           space: '${{ env.OCTOPUS_SPACE }}'

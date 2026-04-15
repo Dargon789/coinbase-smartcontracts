@@ -1,12 +1,9 @@
-<!-- What is this PR solving? Write a clear description or reference the issues it solves (e.g. `fixes #123`). What other alternatives have you explored? Are there any parts you think require more attention from reviewers? -->
+## Description
 
-<!----------------------------------------------------------------------
-Before creating the pull request, please make sure you do the following:
+_Concise description of proposed changes_
 
-- Read the Contributing Guidelines at https://wagmi.sh/dev/contributing
-- Check that there isn't already a PR that solves the problem the same way. If you find a duplicate, please help us review it.
-- Update the corresponding documentation if needed.
-- Include relevant tests that fail without this PR, but pass with it.
+## Additional Information
 
-Thank you for contributing to Wagmi!
------------------------------------------------------------------------>
+- [ ] I read the [contributing docs](/wagmi-dev/wagmi/blob/main/.github/CONTRIBUTING.md) (if this is your first contribution)
+
+Your ENS/address:

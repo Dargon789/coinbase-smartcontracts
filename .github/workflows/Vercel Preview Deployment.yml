@@ -4,6 +4,7 @@ on:
   repository_dispatch:
     types:
       - 'vercel.deployment.success'
+      
 permissions:
   contents: read
 jobs:

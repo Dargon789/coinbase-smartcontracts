@@ -2,8 +2,6 @@ name: Changesets
 on:
   push:
     branches: [main]
-permissions:
-  contents: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -37,12 +35,12 @@ jobs:
           fetch-depth: 0
 
       - name: Install dependencies
-        uses: wevm/actions/.github/actions/pnpm@f7ad7f00e16e73322562922c241f21f0c7ffbbec
+        uses: wevm/actions/.github/actions/pnpm@main
         with:
           node-version: 24.5
 
       - name: PR or publish
-        uses: changesets/action@e0145edc7d9d8679003495b11f87bd8ef63c0cba # v1.5.3
+        uses: changesets/action@e0145edc7d9d8679003495b11f87bd8ef63c0cba
         with:
           title: 'chore: version packages'
           commit: 'chore: version packages'
@@ -52,7 +50,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Publish canary release
+      - name: Publish prerelease
         if: steps.changesets.outputs.published != 'true'
         continue-on-error: true
         env:

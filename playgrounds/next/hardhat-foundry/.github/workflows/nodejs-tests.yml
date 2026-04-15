@@ -7,12 +7,12 @@ jobs:
         runs-on: ubuntu-24.04
         strategy:
             matrix:
-                node-version: [15]
+                node-version: [24]
         steps:
         - uses: actions/checkout@v2
         - uses: pnpm/action-setup@v2.2.2
         with:
-          version: 8
+          version: 10
         name: Configure pnpm registry
         run: pnpm config set registry https://registry.npmjs.org/
           name: Use Node.js ${{ matrix.node-version }}
