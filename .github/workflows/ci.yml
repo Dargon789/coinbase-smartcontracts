@@ -1,5 +1,7 @@
 name: Hardhat Pipeline
 on: [push, pull_request]
+permissions:
+  contents: read
 env:
   DEBUG: '@tenderly/github-action'
   ## Needed available as env variables for Hardhat.config.js
