@@ -81,12 +81,12 @@
     "@coinbase/wallet-sdk": "catalog:",
     "@gemini-wallet/core": "catalog:",
     "@metamask/sdk": "catalog:",
-    "msw": "^2.13.3",
-    "porto": "catalog:",
     "@safe-global/safe-apps-provider": "catalog:",
     "@safe-global/safe-apps-sdk": "catalog:",
     "@wagmi/core": "workspace:*",
-    "@walletconnect/ethereum-provider": "catalog:"
+    "@walletconnect/ethereum-provider": "catalog:",
+    "msw": "^2.4.9",
+    "porto": "catalog:"
   },
   "contributors": [
     "awkweb.eth <t@wevm.dev>",

@@ -10,12 +10,12 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "nuxt": "latest",
     "@tanstack/vue-query": "latest",
+    "@wagmi/vue": "latest",
+    "nuxt": "latest",
     "viem": "latest",
     "vue": "latest",
-    "vue-router": "latest",
-    "@wagmi/vue": "latest"
+    "vue-router": "latest"
   },
   "devDependencies": {
     "typescript": "latest",

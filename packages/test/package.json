@@ -101,17 +101,17 @@
     }
   },
   "devDependencies": {
-    "ox": "catalog:",
-    "react": "catalog:",
-    "react-dom": "catalog:",
     "@tanstack/react-query": "catalog:",
     "@tanstack/vue-query": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "vue": "catalog:",
-    "wagmi": "workspace:*",
     "@wagmi/core": "workspace:*",
-    "@wagmi/vue": "workspace:*"
+    "@wagmi/vue": "workspace:*",
+    "ox": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "vue": "catalog:",
+    "wagmi": "workspace:*"
   },
   "contributors": [
     "awkweb.eth <t@wevm.dev>",
