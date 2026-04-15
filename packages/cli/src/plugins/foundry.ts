@@ -158,7 +158,7 @@ export function foundry(config: FoundryConfig = {}): FoundryResult {
       ['config', '--json', '--root', project],
       {
         encoding: 'utf-8',
-        shell: true,
+        shell: false,
       },
     )
     if (result.error) throw result.error
