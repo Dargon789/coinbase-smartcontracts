@@ -33,7 +33,8 @@ jobs:
           verification_visibility: bytecode
  
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+        working-directory: examples/Hardhat-ignition
  
       - name: Run Tests
         run: npm run test:vnet
