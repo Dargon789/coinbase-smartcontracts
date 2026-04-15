@@ -165,7 +165,7 @@ export async function generate(options: Generate = {}) {
       logger.log('Setting up watch process')
 
       // Watch for changes
-      let timeout: NodeJS.Timeout | null
+      let timeout: NodeJS.Timeout | null = null
       for (const watchConfig of watchConfigs) {
         const paths =
           typeof watchConfig.paths === 'function'
