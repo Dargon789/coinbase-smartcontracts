@@ -108,8 +108,8 @@
     "zustand": "5.0.0"
   },
   "devDependencies": {
-    "@tanstack/query-core": "catalog:",
-    "ox": "catalog:"
+    "ox": "catalog:",
+    "@tanstack/query-core": "catalog:"
   },
   "contributors": [
     "awkweb.eth <t@wevm.dev>",

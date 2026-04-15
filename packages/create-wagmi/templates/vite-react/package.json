@@ -8,18 +8,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tanstack/react-query": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "@tanstack/react-query": "latest",
     "viem": "latest",
     "wagmi": "latest"
   },
   "devDependencies": {
+    "typescript": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "vite": "latest",
     "@vitejs/plugin-react": "latest",
-    "@wagmi/cli": "latest",
-    "typescript": "latest",
-    "vite": "latest"
+    "@wagmi/cli": "latest"
   }
 }

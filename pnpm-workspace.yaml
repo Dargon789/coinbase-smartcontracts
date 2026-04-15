@@ -19,9 +19,9 @@ catalog:
   '@tanstack/query-core': 5.49.1
   '@tanstack/react-query': 5.49.2
   '@tanstack/vue-query': 5.49.1
-  '@types/react': ^19.2.0
-  '@types/react-dom': ^19.2.0
-  '@vitejs/plugin-react': ^4.3.3
+  '@types/react': ^19.2.14
+  '@types/react-dom': ^19.2.3
+  '@vitejs/plugin-react': ^4.7.0
   '@vitejs/plugin-vue': 6.0.1
   '@walletconnect/ethereum-provider': 2.21.1
   buffer: 6.0.3
@@ -57,9 +57,9 @@ overrides:
   node-forge@<1.3.2: '>=1.3.2'
   semver@<5.7.2: '>=5.7.2'
   serialize-javascript@>=6.0.0 <6.0.2: 6.0.2
-  tar@=7.5.1: '>=7.5.2'
+  tar@=7.5.1: '>=7.5.13'
   tmp@<=0.2.3: 0.2.4
-  vite@>=7.1.0 <=7.1.10: '>=7.1.11'
+  vite@>=7.1.0 <=7.1.10: '>=8.0.8'
   ws@>=8.0.0 <8.17.1: 8.17.1
 packages:
   - packages/*

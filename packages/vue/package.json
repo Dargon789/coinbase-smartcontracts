@@ -106,11 +106,11 @@
     "@wagmi/core": "workspace:*"
   },
   "devDependencies": {
+    "nuxt": "catalog:",
     "@nuxt/schema": "catalog:",
     "@tanstack/vue-query": "catalog:",
-    "@vue/test-utils": "^2.4.6",
-    "nuxt": "catalog:",
-    "vue": "catalog:"
+    "vue": "catalog:",
+    "@vue/test-utils": "^2.4.6"
   },
   "contributors": [
     "awkweb.eth <t@wevm.dev>",

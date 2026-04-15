@@ -3,6 +3,6 @@
   "private": true,
   "type": "module",
   "devDependencies": {
-    "hardhat": "^3.0.0"
+    "hardhat": "^3.3.0"
   }
 }
