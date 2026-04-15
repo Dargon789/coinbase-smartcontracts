@@ -1,74 +1,165 @@
-  {
-  "name": "ethereum-contracts-template",
-  "version": "0.1.0",
-  "description": "Template to develop ethereum smart contracts",
-  "repository": "github:wighawag/ethereum-contracts-template",
-  "author": "wighawag",
-  "license": "MIT",
-  "keywords": [
-    "ethereum",
-    "smart-contracts",
-    "template",
-    "boilerplate"
-  ],
-  "resolutions": {
-    "websocket": "1.0.32"
+{
+  "name": "workspace",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "pnpm run --filter @wagmi/core --filter @wagmi/cli build && pnpm run --filter @wagmi/connectors build && pnpm run --filter wagmi --filter @wagmi/vue build",
+    "bench:types": "TYPES=true vitest bench-d.ts",
+    "changeset:prepublish": "pnpm clean && pnpm version:update && pnpm build && node scripts/formatPackageJson.ts && node scripts/generateProxyPackages.ts",
+    "changeset:publish": "pnpm changeset:prepublish && changeset publish",
+    "changeset:version": "changeset version && pnpm version:update && pnpm format",
+    "check": "biome check --write",
+    "check:repo": "sherif -i viem",
+    "check:types": "pnpm run --r --parallel check:types && tsc --noEmit",
+    "check:unused": "pnpm clean && knip",
+    "clean": "pnpm run --r --parallel clean && rm -rf packages/**/*.json.tmp",
+    "deps": "pnpx taze -r",
+    "deps:ci": "pnpx actions-up",
+    "dev": "pnpm dev:react",
+    "dev:cli": "pnpm --filter cli dev",
+    "dev:core": "pnpm --filter vite-core dev",
+    "dev:create-wagmi": "pnpm --filter create-wagmi dev",
+    "dev:next": "pnpm --filter next-app dev",
+    "dev:nuxt": "pnpm --filter nuxt-app dev",
+    "dev:react": "pnpm --filter vite-react dev",
+    "dev:start": "pnpm --filter tanstack-start dev",
+    "dev:vue": "pnpm --filter vite-vue dev",
+    "docs:dev": "pnpm --filter site dev",
+    "format": "biome format --write",
+    "postinstall": "pnpm preconstruct",
+    "preconstruct": "node scripts/preconstruct.ts",
+    "preinstall": "pnpx only-allow pnpm",
+    "prepare": "pnpm simple-git-hooks",
+    "test": "vitest",
+    "test:build": "node scripts/generateProxyPackages.ts && pnpm run --r --parallel test:build",
+    "test:cov": "vitest run --coverage",
+    "test:typecheck": "vitest typecheck",
+    "test:update": "vitest --update",
+    "version:update": "node scripts/updateVersion.ts",
+    "version:update:viem": "node scripts/updateViemVersion.ts"
   },
   "devDependencies": {
-    "@ethereum-waffle/chai": "^3.0.2",
-    "@ethersproject/wallet": "^5.0.5",
-    "@nomiclabs/buidler": "^1.4.8",
-    "@openzeppelin/contracts": "^3.2.1-solc-0.7",
-    "@types/chai": "^4.2.11",
-    "@types/mocha": "^8.0.2",
-    "@types/node": "^14.10.2",
-    "@typescript-eslint/eslint-plugin": "^3.9.1",
-    "@typescript-eslint/parser": "^3.9.1",
-    "buidler-deploy": "^0.6.0-beta.33",
-    "buidler-ethers-v5": "^0.2.3",
-    "chai": "^4.2.0",
-    "cross-env": "^7.0.2",
-    "dotenv": "^8.2.0",
-    "eslint": "^7.7.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "ethers": "^5.0.17",
-    "fs-extra": "^9.0.1",
-    "mocha": "^8.1.1",
-    "prettier": "^2.0.5",
-    "prettier-plugin-solidity": "^1.0.0-alpha.57",
-    "solidity-coverage": "^0.7.10",
-    "ts-node": "^9.0.0",
-    "typescript": "^3.9.7"
+    "@arethetypeswrong/cli": "^0.16.4",
+    "@ark/attest": "^0.56.0",
+    "@biomejs/biome": "^2.2.4",
+    "@changesets/cli": "^3.0.0-next.0",
+    "@svitejs/changesets-changelog-github-compact": "^1.2.0",
+    "@types/node": "^24.5.1",
+    "@vitejs/plugin-react": "catalog:",
+    "@vitest/browser": "^4.0.16",
+    "@vitest/browser-playwright": "^4.0.16",
+    "@vitest/coverage-v8": "^4.0.16",
+    "@wagmi/test": "workspace:*",
+    "happy-dom": "^20.0.0",
+    "knip": "^5.69.0",
+    "playwright": "1.56.1",
+    "prool": "^0.2.2",
+    "publint": "^0.2.11",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "sherif": "^1.0.0",
+    "simple-git-hooks": "^2.11.1",
+    "testcontainers": "^11.11.0",
+    "typescript": "^5.9.3",
+    "viem": "2.44.0",
+    "vite-plugin-react-fallback-throttle": "^0.1.1",
+    "vitest": "^4.0.16",
+    "vitest-browser-react": "^2.0.2"
   },
-  "scripts": {
-    "postinstall": "node ./.setup.js",
-    "lint": "eslint \"**/*.{js,ts}\"",
-    "lint:fix": "eslint --fix \"**/*.{js,ts}\"",
-    "format": "prettier --write \"**/*.{ts,js,sol}\"",
-    "test": "cross-env BUIDLER_DEPLOY_FIXTURE=true mocha --bail --recursive test",
-    "coverage": "cross-env BUIDLER_DEPLOY_FIXTURE=true BUIDLER_DEPLOY_NO_COMPILE=true buidler --network coverage coverage",
-    "dev": "buidler node --reset --watch --export contractsInfo.json",
-    "compile": "buidler compile",
-    "local:dev": "buidler --network localhost deploy --watch",
-    "local:deploy": "buidler --network localhost deploy",
-    "local:run": "cross-env BUIDLER_NETWORK=localhost ts-node --files",
-    "local:seed": "cross-env BUIDLER_NETWORK=localhost ts-node --files scripts/seed.ts",
-    "local:export": "buidler --network localhost export",
-    "void:deploy": "buidler deploy",
-    "staging:deploy": "buidler --network staging deploy",
-    "staging:export": "buidler --network staging export",
-    "staging:seed": "cross-env BUIDLER_NETWORK=staging ts-node --files scripts/seed.ts",
-    "rinkeby:deploy": "buidler --network rinkeby deploy",
-    "rinkeby:export": "buidler --network rinkeby export",
-    "rinkeby:seed": "cross-env BUIDLER_NETWORK=rinkeby ts-node --files scripts/seed.ts",
-    "kovan:deploy": "buidler --network kovan deploy",
-    "kovan:export": "buidler --network kovan export",
-    "goerli:deploy": "buidler --network goerli deploy",
-    "goerli:export": "buidler --network goerli export",
-    "mainnet:deploy": "buidler --network mainnet deploy",
-    "mainnet:export": "buidler --network mainnet export",
-    "rinkeby:run": "cross-env BUIDLER_NETWORK=rinkeby ts-node --files",
-    "buidler": "buidler"
+  "packageManager": "pnpm@10.22.0",
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "^22.0.0",
+      "onFail": "download"
+    }
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm check"
+  },
+  "knip": {
+    "ignore": [
+      "**/templates/**",
+      "**/hardhat.config.js",
+      "packages/**/*.bench-d.ts",
+      "scripts/**"
+    ],
+    "ignoreWorkspaces": [
+      "packages/register-tests/**",
+      "packages/test",
+      "playgrounds/**",
+      "site/**"
+    ],
+    "workspaces": {
+      "packages/cli": {
+        "entry": [
+          "src/cli.ts!",
+          "src/exports/{config,index,plugins}.ts!",
+          "types/*.d.ts!"
+        ],
+        "ignore": [
+          "test/{constants,setup,utils}.ts"
+        ]
+      },
+      "packages/connectors": {
+        "entry": "src/exports/index.ts!",
+        "ignoreDependencies": [
+          "@base-org/account",
+          "@coinbase/wallet-sdk",
+          "@gemini-wallet/core",
+          "@metamask/sdk",
+          "@safe-global/safe-apps-provider",
+          "@safe-global/safe-apps-sdk",
+          "@wagmi/core",
+          "@walletconnect/ethereum-provider",
+          "porto"
+        ]
+      },
+      "packages/core": {
+        "entry": "src/exports/{actions,chains,codegen,experimental,index,internal,query,tempo}.ts!",
+        "ignore": [
+          "test/setup.ts"
+        ],
+        "ignoreDependencies": [
+          "@tanstack/query-core",
+          "ox"
+        ]
+      },
+      "packages/create-wagmi": {
+        "entry": "src/cli.ts!"
+      },
+      "packages/react": {
+        "entry": [
+          "src/exports/{actions,chains,codegen,connectors,experimental,index,internal,query,tempo}.ts!",
+          "src/exports/actions/experimental.ts!"
+        ],
+        "ignore": [
+          "test/setup.ts"
+        ]
+      },
+      "packages/test": {
+        "entry": [
+          "src/setup.ts!",
+          "src/setup.global.ts!",
+          "src/setup.global.types.ts!",
+          "src/exports/{index,react,tempo}.ts!",
+          "src/tempo/setup.ts!",
+          "src/tempo/setup.global.ts!"
+        ]
+      },
+      "packages/vue": {
+        "entry": [
+          "src/exports/{actions,chains,connectors,index,internal,nuxt,query}.ts!",
+          "src/exports/actions/experimental.ts!"
+        ],
+        "ignore": [
+          "src/nuxt/runtime/*",
+          "test/setup.ts"
+        ],
+        "ignoreDependencies": [
+          "nuxt"
+        ]
+      }
+    }
   }
 }
