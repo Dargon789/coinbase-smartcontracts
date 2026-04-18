@@ -23,7 +23,7 @@ const config: HardhatUserConfig = {
 	solidity: {
 		profiles: {
 			default: {
-				version: '0.8.17',
+				version: '0.8.28',
 			},
 			production: {
 				version: '0.8.17',
