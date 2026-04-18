@@ -109,7 +109,7 @@ export async function generate(options: Generate = {}) {
     }
 
     // Sort contracts by name Ascending (low to high) as the key is `String`
-    const sortedAscContractMap = new Map([...contractMap].sort())
+    const sortedAscContractMap = new Map([...contractMap].sort((a, b) => a[0].localeCompare(b[0])))
     const contracts = [...sortedAscContractMap.values()]
     if (!contracts.length && !options.watch) {
       spinner.error()
