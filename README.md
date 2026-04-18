@@ -79,7 +79,7 @@ $ make test
 forge test --gas-report
 [⠊] Compiling...
 [⠑] Compiling 19 files with 0.8.13
-Compiler run successful
+[⠑] Compiling 19 files with 0.8.18
 
 Running 2 tests for OnlyAuthorizedTest.json:OnlyAuthorizedTest
 [PASS] testCanChangeOwner() (gas: 11542)
