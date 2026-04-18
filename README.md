@@ -399,4 +399,4 @@ Since this is a monorepo, you can easily add a web frontend:
 
 ## License
 
-MIT
+Unlicense
