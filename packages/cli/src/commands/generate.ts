@@ -179,13 +179,10 @@ export async function generate(options: Generate = {}) {
 
           let needsWrite = false
           if (event === 'change' || event === 'add') {
-            const eventFn =
-              event === 'change' ? watchConfig.onChange : watchConfig.onAdd
-            const config = await eventFn?.(path)
-            if (!config) return
-            const contract = await getContract({ ...config, isTypeScript })
-            contractMap.set(contract.name, contract)
-            needsWrite = true
+        spawnSync(forgeExecutable, ['clean', '--root', project], {
+          encoding: 'utf-8',
+          stdio: 'pipe',
+        })
           } else if (event === 'unlink') {
             const name = await watchConfig.onRemove?.(path)
             if (!name) return
