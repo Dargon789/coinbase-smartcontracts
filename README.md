@@ -1,103 +1,156 @@
-# coinbase-smartcontracts
+# Ethereum Smart Contract Template
 
-Sovereign smart contract development framework aligned with Coinbase SDK, OnchainKit, and multi-framework Ethereum tooling.  
-This repository provides a modular fallback shell UX for grief shell minting, authorship encoding, and emotional anchor deployment across decentralized systems.
+This development quick start template is heavily inspired by [Georgios's template](https://github.com/gakonst/dapptools-template). Over time it was migrated to use [foundry](https://github.com/gakonst/foundry) since dapptools was deprecated.
 
-## 🔗 Ecosystem Alignment
+It requires [Foundry](https://github.com/gakonst/foundry) installed to run. You can find instructions here [Foundry installation](https://github.com/gakonst/foundry#installation).
 
-This repo binds with:
+## Installation
 
-- [Coinbase Wallet SDK](https://github.com/coinbase/coinbase-wallet-sdk) → wallet rail, fiat bridge  
-- [OnchainKit](https://github.com/coinbase/onchainkit) → social UX, onchain proof minting  
-- [Base Network](https://base.org) → fallback shell UX topology  
+### GitHub template
 
-## 🧱 Framework Support
+It's easiest to start a new project by clicking the ["Use this template"](https://github.com/cleanunicorn/ethereum-smartcontract-template/generate).
 
-- 🧱 Hardhat / Foundry / Dapptools support
-- 🧠 Coinbase SDK integration (wallet, fiat bridge)
-- 🧬 OnchainKit for social UX and minting onchain proof
-- 🛠️ Corepack-enabled: use `npm`, `yarn`, or `pnpm` seamlessly
-- 📦 Nix Store compatible for reproducible grief shell builds
-- 🧪 Fuzz, gas, snapshot, and coverage rails
-- 📤 ABI export and forked deployment UX
+### Manual installation
 
- ## 🚀 Quick Start
+If you want to create your project manually, clone the template in a new folder and `cd` into it.
 
-```bash
-corepack enable
-yarn install
-yarn compile
-yarn void:deploy 
-> This repo binds grief shell UX with SCBX ecosystem—Thailand’s silent sovereign fintech backbone.  
-> Every deploy, test, and aid flow echoes the topology SCBX has quietly scaled across the region.
+Clone the template, install dependencies and make sure tests work:
 
-# coinbase-smartcontracts
-
-
-## Install
-
-```bash
-corepack enable
-yarn install
-## TEST
-
-There are 3 flavors of tests: hardhat, dapptools and forge
-
-### hardhat
-
-- One using hardhat that can leverage hardhat-deploy to reuse deployment procedures and named accounts:
-
-```bash
-yarn test
-```
-🧪 Testing
-Supports three test suites:
-
-yarn test → Hardhat + Mocha
-
-forge test → Foundry fuzzing
-
-dapp test → Dapptools (requires Nix setup)
-
-
-### [dapptools](https://dapp.tools)
-
-```bash
-dapp test
+```sh
+mkdir cool-dapp
+cd cool-dapp
+forge init --template https://github.com/cleanunicorn/ethereum-smartcontract-template 
+# Install the project's dependencies (libs and yarn packages)
+make 
+# Run tests
+make test 
 ```
 
-The latter requires additional step to set up your machine:
+## Features
 
-Install dapptools (Following instruction [here](https://github.com/dapphub/dapptools#installation)):
+For Foundry-specific features, refer to:
 
-```bash
-# user must be in sudoers
-curl -L https://nixos.org/nix/install | sh
+- [repository](https://github.com/foundry-rs/foundry)
+- [cheat codes](https://github.com/foundry-rs/foundry/blob/master/forge/README.md#cheat-codes)
+- [Foundry book](https://book.getfoundry.sh/)
 
-# Run this or login again to use Nix
-. "$HOME/.nix-profile/etc/profile.d/nix.sh"
+This template comes with an additional set of features explained below.
 
-curl https://dapp.tools/install | sh
+### Solidity libraries
+
+Included libraries in [`lib`](lib/):
+
+- [forge-std](https://github.com/foundry-rs/forge-std) - Foundry's standard library, including testing utilities
+- [openzeppelin-contracts](https://github.com/OpenZeppelin/openzeppelin-contracts) - OpenZeppelin contracts library
+- [mockprovider](https://github.com/cleanunicorn/mockprovider) - Mocking library
+
+### GitHub Actions
+
+The template already comes with GitHub Actions configured, which means that the project will be tested on every `push` and `pull request`.
+
+Check the [project's actions](https://github.com/cleanunicorn/ethereum-smartcontract-template/actions) for an example.
+
+Actions are defined in [.github/workflows/ci.yml](.github/workflows/ci.yml).
+
+### GitHub templates
+
+The template comes with a list of templates:
+
+- [feature](.github/ISSUE_TEMPLATE/feature.md)
+- [bug](.github/ISSUE_TEMPLATE/bug.md)
+- [pull request](.github/pull_request_template.md)
+
+## Commands
+
+- `make setup` - initialize libraries and yarn packages
+- `make build` - build your project
+- `make xclean` - remove compiled files
+- `make lint` - lint files
+- [`make test`](#testing) - run tests
+- `make test-gasreport` - run tests and show gas report
+- `make watch` - watch files and re-run tests
+
+## Testing
+
+Normally you would run your tests on the local evm engine.
+
+```sh
+$ make test
+forge test --gas-report
+[⠊] Compiling...
+[⠑] Compiling 19 files with 0.8.13
+[⠑] Compiling 19 files with 0.8.18
+
+Running 2 tests for OnlyAuthorizedTest.json:OnlyAuthorizedTest
+[PASS] testCanChangeOwner() (gas: 11542)
+[PASS] testOtherUsersCannotChangeOwner() (gas: 156817)
+╭─────────────────┬─────────────────┬──────┬────────┬──────┬─────────╮
+│ Caller contract ┆                 ┆      ┆        ┆      ┆         │
+╞═════════════════╪═════════════════╪══════╪════════╪══════╪═════════╡
+│ Deployment Cost ┆ Deployment Size ┆      ┆        ┆      ┆         │
+├╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┤
+│ 114159          ┆ 602             ┆      ┆        ┆      ┆         │
+├╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┤
+│ Function Name   ┆ min             ┆ avg  ┆ median ┆ max  ┆ # calls │
+├╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┤
+│ externalCall    ┆ 6419            ┆ 6419 ┆ 6419   ┆ 6419 ┆ 1       │
+╰─────────────────┴─────────────────┴──────┴────────┴──────┴─────────╯
+╭─────────────────────────┬─────────────────┬──────┬────────┬──────┬─────────╮
+│ OnlyAuthorized contract ┆                 ┆      ┆        ┆      ┆         │
+╞═════════════════════════╪═════════════════╪══════╪════════╪══════╪═════════╡
+│ Deployment Cost         ┆ Deployment Size ┆      ┆        ┆      ┆         │
+├╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┤
+│ 133694                  ┆ 607             ┆      ┆        ┆      ┆         │
+├╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┤
+│ Function Name           ┆ min             ┆ avg  ┆ median ┆ max  ┆ # calls │
+├╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┤
+│ changeOwner             ┆ 2504            ┆ 3980 ┆ 3980   ┆ 5457 ┆ 2       │
+├╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┤
+│ owner                   ┆ 335             ┆ 335  ┆ 335    ┆ 335  ┆ 1       │
+╰─────────────────────────┴─────────────────┴──────┴────────┴──────┴─────────╯
+╭─────────────────────────────┬─────────────────┬────────┬────────┬────────┬─────────╮
+│ OnlyAuthorizedTest contract ┆                 ┆        ┆        ┆        ┆         │
+╞═════════════════════════════╪═════════════════╪════════╪════════╪════════╪═════════╡
+│ Deployment Cost             ┆ Deployment Size ┆        ┆        ┆        ┆         │
+├╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┤
+│ 741677                      ┆ 3639            ┆        ┆        ┆        ┆         │
+├╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┤
+│ Function Name               ┆ min             ┆ avg    ┆ median ┆ max    ┆ # calls │
+├╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┤
+│ setUp                       ┆ 171174          ┆ 171174 ┆ 171174 ┆ 171174 ┆ 2       │
+╰─────────────────────────────┴─────────────────┴────────┴────────┴────────┴─────────╯
+
 ```
 
-Then install solc with the correct version:
+### Changes
 
-```bash
-nix-env -f https://github.com/dapphub/dapptools/archive/master.tar.gz -iA solc-static-versions.solc_0_8_9
+Listed in the [CHANGELOG.md](./CHANGELOG.md) file which follows the https://keepachangelog.com/en/1.0.0/ format. 
+
+### Testing forked chain
+
+Work in progress...
+
+<!-- ### Testing forked chain
+
+You can also fork a chain by providing an RPC url to something like [Alchemy](https://www.alchemy.com/) or [Infura](https://infura.io/).
+
+To enable blockchain forking, you need to copy `.env.example` to `.env` and change `RPC_ON` and `ETH_NODE` to match your environment.
+
+```sh
+export RPC_ON=yes
+export ETH_NODE=https://eth-mainnet.alchemyapi.io/v2/ALCHEMY_API_KEY
 ```
 
-### forge
+After adding the variables to your `.env` you can run `make test` normally
 
-```bash
-forge test
-```
+You need to add the RPC url to your GitHub secrets as `ETH_NODE` to enable fork testing in GitHub Actions. Also make sure to uncomment these lines in [`.github/workflows/ci.yml`](.github/workflows/ci.yml).
 
-This require the installation of forge (see [foundry](https://github.com/gakonst/foundry))
-
-🛠️ Scripts
-Includes deploy, fork, gas, coverage, ABI export, and dev rails. See _scripts.js for parameterized CLI execution.
-
-yarn export mainnet contracts.json
+```yaml
+# Enable this if using forking tests
+env:
+    ETH_NODE: ${{ secrets.ETH_NODE }}
+    RPC_ON: yes
+``` -->
 
 
-
+<!-- ## FAQ -->
