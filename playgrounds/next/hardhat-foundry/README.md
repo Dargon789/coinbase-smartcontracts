@@ -65,7 +65,7 @@ We also recommend installing [Zellij](https://zellij.dev/) for an optimal develo
 ### Compile Contracts
 
 ```bash
-pnpm contracts:compile
+pnpm compile
 ```
 
 This runs both Solidity and TypeScript compilation.
