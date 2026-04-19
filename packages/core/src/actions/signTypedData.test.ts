@@ -59,9 +59,14 @@ test('behavior: not connected', async () => {
       message: typedData.basic.message,
     }),
   ).rejects.toMatchInlineSnapshot(`
-    [ConnectorNotConnectedError: Connector not connected.
+    [HttpRequestError: HTTP request failed.
 
-    Version: @wagmi/core@x.y.z]
+    Status: 400
+    URL: http://127.0.0.1:8545/5217
+    Request body: {"method":"eth_signTypedData_v4","params":["0x95132632579b073D12a6673e18Ab05777a6B86f8","{\\"domain\\":{},\\"message\\":{\\"from\\":{\\"name\\":\\"Cow\\",\\"wallet\\":\\"0xCD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826\\"},\\"to\\":{\\"name\\":\\"Bob\\",\\"wallet\\":\\"0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB\\"},\\"contents\\":\\"Hello, Bob!\\"},\\"primaryType\\":\\"Mail\\",\\"types\\":{\\"EIP712Domain\\":[],\\"Person\\":[{\\"name\\":\\"name\\",\\"type\\":\\"string\\"},{\\"name\\":\\"wallet\\",\\"type\\":\\"address\\"}],\\"Mail\\":[{\\"name\\":\\"from\\",\\"type\\":\\"Person\\"},{\\"name\\":\\"to\\",\\"type\\":\\"Person\\"},{\\"name\\":\\"contents\\",\\"type\\":\\"string\\"}]}}"]}
+
+    Details: Bad Request
+    Version: viem@2.44.0]
   `)
 })
 

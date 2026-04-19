@@ -61,9 +61,17 @@ test('behavior: not connected', async () => {
       ],
     }),
   ).rejects.toThrowErrorMatchingInlineSnapshot(`
-    [ConnectorNotConnectedError: Connector not connected.
+    [TransactionExecutionError: HTTP request failed.
 
-    Version: @wagmi/core@x.y.z]
+    Status: 400
+    URL: http://127.0.0.1:8545/5111
+    Request body: {"method":"eth_sendTransaction","params":[{"data":"0x1249c58b","to":"0xFBA3912Ca04dd458c843e2EE08967fC04f3579c2","from":"0x95132632579b073D12a6673e18Ab05777a6B86f8"}]}
+     
+    Request Arguments:
+      from:  0x95132632579b073D12a6673e18Ab05777a6B86f8
+
+    Details: Bad Request
+    Version: viem@2.44.0]
   `)
 })
 

@@ -60,8 +60,13 @@ test('behavior: not connected', async () => {
   await expect(
     signMessage(config, { message: 'foo bar baz' }),
   ).rejects.toMatchInlineSnapshot(`
-    [ConnectorNotConnectedError: Connector not connected.
+    [HttpRequestError: HTTP request failed.
 
-    Version: @wagmi/core@x.y.z]
+    Status: 400
+    URL: http://127.0.0.1:8545/1246
+    Request body: {"method":"eth_sign","params":["0x95132632579b073D12a6673e18Ab05777a6B86f8","0x666f6f206261722062617a"]}
+
+    Details: Bad Request
+    Version: viem@2.44.0]
   `)
 })

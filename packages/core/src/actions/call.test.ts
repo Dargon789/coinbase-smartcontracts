@@ -64,23 +64,18 @@ test('insufficient funds', async () => {
       value: parseEther('100000'),
     }),
   ).rejects.toThrowErrorMatchingInlineSnapshot(`
-    [CallExecutionError: The total cost (gas * gas fee + value) of executing this transaction exceeds the balance of the account.
+    [CallExecutionError: HTTP request failed.
 
-    This error could arise when the account does not have enough funds to:
-     - pay for the total gas fee,
-     - pay for the value to send.
-     
-    The cost of the transaction is calculated as \`gas * gas fee + value\`, where:
-     - \`gas\` is the amount of gas needed for transaction to execute,
-     - \`gas fee\` is the gas fee,
-     - \`value\` is the amount of ether to send to the recipient.
+    Status: 400
+    URL: http://127.0.0.1:8545/4346
+    Request body: {"method":"eth_call","params":[{"from":"0x95132632579b073D12a6673e18Ab05777a6B86f8","to":"0x1D5D7e139A994CeE7f360be398Ef032fE5D74fce","value":"0x152d02c7e14af6800000"},"latest"]}
      
     Raw Call Arguments:
       from:   0x95132632579b073D12a6673e18Ab05777a6B86f8
       to:     0x1D5D7e139A994CeE7f360be398Ef032fE5D74fce
       value:  100000 ETH
 
-    Details: Insufficient funds for gas * price + value
+    Details: Bad Request
     Version: viem@2.44.0]
   `)
 })
@@ -116,14 +111,18 @@ test('contract revert (contract error)', async () => {
       to: address.wagmiMintExample,
     }),
   ).rejects.toThrowErrorMatchingInlineSnapshot(`
-    [CallExecutionError: Execution reverted with reason: Token ID is taken.
+    [CallExecutionError: HTTP request failed.
 
+    Status: 400
+    URL: http://127.0.0.1:8545/4346
+    Request body: {"method":"eth_call","params":[{"data":"0xa0712d6800000000000000000000000000000000000000000000000000000000000001a4","from":"0x95132632579b073D12a6673e18Ab05777a6B86f8","to":"0xFBA3912Ca04dd458c843e2EE08967fC04f3579c2"},"latest"]}
+     
     Raw Call Arguments:
       from:  0x95132632579b073D12a6673e18Ab05777a6B86f8
       to:    0xFBA3912Ca04dd458c843e2EE08967fC04f3579c2
       data:  0xa0712d6800000000000000000000000000000000000000000000000000000000000001a4
 
-    Details: execution reverted: Token ID is taken
+    Details: Bad Request
     Version: viem@2.44.0]
   `)
 })
@@ -136,14 +135,18 @@ test('contract revert (insufficient params)', async () => {
       to: address.wagmiMintExample,
     }),
   ).rejects.toThrowErrorMatchingInlineSnapshot(`
-    [CallExecutionError: Execution reverted for an unknown reason.
+    [CallExecutionError: HTTP request failed.
 
+    Status: 400
+    URL: http://127.0.0.1:8545/4346
+    Request body: {"method":"eth_call","params":[{"data":"0xa0712d68","from":"0x95132632579b073D12a6673e18Ab05777a6B86f8","to":"0xFBA3912Ca04dd458c843e2EE08967fC04f3579c2"},"latest"]}
+     
     Raw Call Arguments:
       from:  0x95132632579b073D12a6673e18Ab05777a6B86f8
       to:    0xFBA3912Ca04dd458c843e2EE08967fC04f3579c2
       data:  0xa0712d68
 
-    Details: execution reverted
+    Details: Bad Request
     Version: viem@2.44.0]
   `)
 })
