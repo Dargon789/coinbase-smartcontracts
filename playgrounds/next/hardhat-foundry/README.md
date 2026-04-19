@@ -340,7 +340,7 @@ import GreetingsRegistry from "template-ethereum-contracts/deployments/sepolia/G
 ### Building for Publication
 
 ```bash
-pnpm contracts:build
+pnpm compile --build-profile production
 ```
 
 ## Environment Variables
