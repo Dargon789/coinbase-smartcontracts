@@ -1,17 +1,5 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "strict": true,
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "forceConsistentCasingInFileNames": true,
-    "outDir": "dist"
-  },
-  "include": ["./scripts", "./deploy", "./test"],
-  "files": [
-    "buidler.config.ts",
-    "node_modules/buidler-ethers-v5/src/type-extensions.d.ts",
-    "node_modules/buidler-deploy/src/type-extensions.d.ts"
-  ]
+  "extends": "./tsconfig.base.json",
+  "include": ["scripts/**/*.ts", "vitest.config.ts"],
+  "exclude": []
 }
