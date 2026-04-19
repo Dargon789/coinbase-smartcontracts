@@ -62,8 +62,16 @@ minimumReleaseAgeExclude:
   - viem
 
 onlyBuiltDependencies:
+  - bufferutil
+  - cpu-features
   - esbuild
+  - msw
+  - protobufjs
   - sharp
+  - simple-git-hooks
+  - ssh2
+  - utf-8-validate
+  - vue-demi
   - workerd
 
 overrides:
