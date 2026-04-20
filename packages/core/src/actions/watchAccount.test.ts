@@ -18,21 +18,21 @@ test('default', async () => {
   await disconnect(config)
 
   expect(accounts).toMatchInlineSnapshot(`
-      [
-        {
-          "address": undefined,
-          "status": "connecting",
-        },
-        {
-          "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-          "status": "connected",
-        },
-        {
-          "address": undefined,
-          "status": "disconnected",
-        },
-      ]
-    `)
+    [
+      {
+        "address": undefined,
+        "status": "connecting",
+      },
+      {
+        "address": "0x95132632579b073D12a6673e18Ab05777a6B86f8",
+        "status": "connected",
+      },
+      {
+        "address": undefined,
+        "status": "disconnected",
+      },
+    ]
+  `)
 
   unwatch()
 })

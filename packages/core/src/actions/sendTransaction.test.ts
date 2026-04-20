@@ -70,23 +70,18 @@ test('behavior: value exceeds balance', async () => {
       value: parseEther('99999'),
     }),
   ).rejects.toThrowErrorMatchingInlineSnapshot(`
-    [TransactionExecutionError: The total cost (gas * gas fee + value) of executing this transaction exceeds the balance of the account.
+    [TransactionExecutionError: HTTP request failed.
 
-    This error could arise when the account does not have enough funds to:
-     - pay for the total gas fee,
-     - pay for the value to send.
-     
-    The cost of the transaction is calculated as \`gas * gas fee + value\`, where:
-     - \`gas\` is the amount of gas needed for transaction to execute,
-     - \`gas fee\` is the gas fee,
-     - \`value\` is the amount of ether to send to the recipient.
+    Status: 400
+    URL: http://127.0.0.1:8545/8350
+    Request body: {"method":"eth_sendTransaction","params":[{"from":"0x95132632579b073D12a6673e18Ab05777a6B86f8","to":"0xd2135CfB216b74109775236E36d4b433F1DF507B","value":"0x152cf4e72a974f1c0000"}]}
      
     Request Arguments:
       from:   0x95132632579b073D12a6673e18Ab05777a6B86f8
       to:     0xd2135CfB216b74109775236E36d4b433F1DF507B
       value:  99999 ETH
 
-    Details: Insufficient funds for gas * price + value
+    Details: Bad Request
     Version: viem@2.44.0]
   `)
   await disconnect(config, { connector })
