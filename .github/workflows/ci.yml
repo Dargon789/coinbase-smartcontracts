@@ -23,7 +23,7 @@ jobs:
 
       - name: Install Foundry
         # Pinned for reproducible CI runs; update deliberately when upgrading Foundry
-        uses: foundry-rs/foundry-toolchain@b41c5d15e2e5a15e599e33e50e54f9b89e0e7a34
+        uses: foundry-rs/foundry-toolchain@b0a9dd9ceda36f63e2326ce530c10e6916f4b8a2
 
       - name: Show Forge version
         run: forge --version
