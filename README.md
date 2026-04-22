@@ -60,7 +60,7 @@ corepack enable & corepack use pnpm@10
 
 There are 2 flavors of tests
 
-1. Using hardhat
+1. Using Hardhat
 
 ```bash
 pnpm test
