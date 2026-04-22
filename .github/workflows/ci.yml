@@ -1,38 +1,37 @@
 name: CI
-
-permissions: {}
+ 
 on:
   push:
+    branches: [main]
   pull_request:
-  workflow_dispatch:
-
+ 
 env:
   FOUNDRY_PROFILE: ci
-
+ 
 jobs:
   check:
-    name: Foundry project
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
         with:
-          persist-credentials: false
           submodules: recursive
-
+ 
       - name: Install Foundry
-        # Pinned for reproducible CI runs; update deliberately when upgrading Foundry
-        uses: foundry-rs/foundry-toolchain@b0a9dd9ceda36f63e2326ce530c10e6916f4b8a2
-
-      - name: Show Forge version
-        run: forge --version
-
-      - name: Run Forge fmt
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          cache: true
+ 
+      - name: Check formatting
         run: forge fmt --check
-
-      - name: Run Forge build
-        run: forge build --sizes
-
-      - name: Run Forge tests
+ 
+      - name: Run linter
+        run: forge lint
+ 
+      - name: Build
+        run: forge build
+ 
+      - name: Run tests
         run: forge test -vvv
+ 
+      - name: Check gas snapshots
+        run: forge snapshot --check
