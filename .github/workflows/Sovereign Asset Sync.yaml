@@ -2,9 +2,6 @@ name: Sovereign Asset Sync
 permissions:
   contents: read
 
-permissions:
-  contents: read
-
 on:
   workflow_dispatch:
     inputs:
