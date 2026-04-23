@@ -19,7 +19,7 @@ jobs:
           cache: true
  
       - name: Generate coverage report
-        run: forge coverage --report lcov
+        run: forge coverage --report lcov --report-file lcov.info
  
       - name: Upload to Codecov
         uses: codecov/codecov-action@v4
