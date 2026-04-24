@@ -5,7 +5,7 @@
   "changelog": ["@svitejs/changesets-changelog-github-compact", { "repo": "wevm/wagmi" }],
   "commit": false,
   "ignore": [
-    "*-register",
+    "**/*-register",
     "@wagmi/test",
     "site",
     "next-app",
