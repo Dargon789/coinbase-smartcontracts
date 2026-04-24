@@ -2,7 +2,7 @@
   "$schema": "https://unpkg.com/@changesets/config@2.3.1/schema.json",
   "access": "public",
   "baseBranch": "main",
-  "changelog": ["@changesets/changelog-github", { "repo": "wevm/wagmi" }],
+  "changelog": ["@svitejs/changesets-changelog-github-compact", { "repo": "wevm/wagmi" }],
   "commit": false,
   "ignore": [
     "*-register",
