@@ -5,12 +5,12 @@
   "changelog": ["@svitejs/changesets-changelog-github-compact", { "repo": "wevm/wagmi" }],
   "commit": false,
   "ignore": [
-    "*-register",
+    "**/*-register",
     "@wagmi/test",
     "site",
     "next-app",
     "nuxt-app",
-    "vite-*"
+    "**/vite-*"
   ],
   "updateInternalDependencies": "patch",
   "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
