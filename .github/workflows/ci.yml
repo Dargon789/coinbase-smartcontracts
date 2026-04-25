@@ -8,6 +8,9 @@ on:
 permissions:
   contents: read
  
+permissions:
+  contents: read
+
 env:
   FOUNDRY_PROFILE: ci
  
