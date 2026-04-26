@@ -520,7 +520,7 @@ dapp test
 
 The latter requires an additional step to set up your machine:
 
-Install dapptools (Following instruction [here](https://github.com/dapphub/dapptools#installation)):
+Install dapptools (following instructions [here](https://github.com/dapphub/dapptools#installation)):
 
 ```bash
 # user must be in sudoers
