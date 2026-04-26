@@ -120,7 +120,7 @@ pnpm fork:execute <network name> scripts/setMessage.ts "Hello world"
 
 [zellij](https://zellij.dev/) is a useful multiplexer (think tmux) for which we have included a [layout file](./zellij.kdl) to get started
 
-Once installed simply run the following to get a local in-memory Ethereum node running along with the tests
+Once installed, simply run the following to get a local in-memory Ethereum node running along with the tests
 
 ```bash
 pnpm start
