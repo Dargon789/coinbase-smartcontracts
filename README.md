@@ -54,7 +54,7 @@ Commit: 3e4c3a49a98561f420af82b8e1c306a9b127ccf4
 
  ## 🚀 Quick Start
 
-corepack enable & corepack use pnpm@10
+corepack enable && corepack use pnpm@10
 
 ## 🧾 Test your contracts
 
