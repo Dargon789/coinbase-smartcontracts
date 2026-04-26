@@ -518,7 +518,7 @@ shall be dual licensed as above, without any additional terms or conditions.
 dapp test
 ```
 
-The latter requires additional step to set up your machine:
+The latter requires an additional step to set up your machine:
 
 Install dapptools (Following instruction [here](https://github.com/dapphub/dapptools#installation)):
 
