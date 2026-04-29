@@ -54,7 +54,7 @@ Commit: 3e4c3a49a98561f420af82b8e1c306a9b127ccf4
 
  ## 🚀 Quick Start
 
-corepack enable && corepack use pnpm@10
+corepack enable & corepack use pnpm@10
 
 ## 🧾 Test your contracts
 
@@ -98,7 +98,7 @@ pnpm compile:watch
 
 - on a network of your choice
 
-  Just make sure you have your .env.local setup. You can use `.env.example` as a template.
+  Just make sure you have your .env.local set up. You can use `.env.example` as a template.
 
   ```bash
   pnpm run deploy <network>
@@ -120,7 +120,7 @@ pnpm fork:execute <network name> scripts/setMessage.ts "Hello world"
 
 [zellij](https://zellij.dev/) is a useful multiplexer (think tmux) for which we have included a [layout file](./zellij.kdl) to get started
 
-Once installed, simply run the following to get a local in-memory Ethereum node running along with the tests
+Once installed simply run the following to get a local in-memory Ethereum node running along with the tests
 
 ```bash
 pnpm start
@@ -520,7 +520,7 @@ dapp test
 
 The latter requires an additional step to set up your machine:
 
-Install dapptools (following instructions [here](https://github.com/dapphub/dapptools#installation)):
+Install dapptools (Following instruction [here](https://github.com/dapphub/dapptools#installation)):
 
 ```bash
 # user must be in sudoers
@@ -544,7 +544,7 @@ nix-env -f https://github.com/dapphub/dapptools/archive/master.tar.gz -iA solc-s
 forge test
 ```
 
-This requires the installation of forge (see [foundry](https://github.com/gakonst/foundry))
+This requires the installation of forge (see [foundry](https://github.com/gakonst/foundry)).
 
 🛠️ Scripts
 Includes deploy, fork, gas, coverage, ABI export, and dev rails. See _scripts.js for parameterized CLI execution.
