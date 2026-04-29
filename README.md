@@ -544,7 +544,7 @@ nix-env -f https://github.com/dapphub/dapptools/archive/master.tar.gz -iA solc-s
 forge test
 ```
 
-This requires the installation of forge (see [foundry](https://github.com/gakonst/foundry)).
+This requires the installation of forge (see [foundry](https://github.com/foundry-rs/foundry)).
 
 🛠️ Scripts
 Includes deploy, fork, gas, coverage, ABI export, and dev rails. See _scripts.js for parameterized CLI execution.
