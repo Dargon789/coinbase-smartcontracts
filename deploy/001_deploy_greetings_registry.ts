@@ -28,5 +28,5 @@ export default execute(
 		);
 	},
 	// execute takes as a second argument an options object where you can specify tags and dependencies
-	{tags: ['GreetingsRegistryFromImport', 'GreetingsRegistryFromImport_deploy']},
+	{tags: ['UniversalResolver', 'UniversalResolver_deploy']},
 );
