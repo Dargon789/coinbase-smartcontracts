@@ -1,5 +1,5 @@
 // we import what we need from the @rocketh alias, see ../rocketh.ts
-import {execute} from '@rocketh';
+import {execute, artifacts} from '@rocketh';
 // import artifacts from '@ensdomains/ens-contracts/artifacts/artifacts.js';
 
 export default execute(
