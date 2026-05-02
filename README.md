@@ -11,7 +11,7 @@ While Hardhat's official [Ignition](https://hardhat.org/ignition) plugin offers 
 - **Hot Contract Replacement (HCR)**: The equivalent of HMR (Hot Module Replacement) for smart contracts. Edit your contracts and see changes live while developing your app or game. This uses proxy patterns with a set of conventions to make it work seamlessly.
 - **Intuitive Deployment Scripts**: Write deployment logic in plain TypeScript.
 - **Flexible Proxy Patterns**: Declarative proxy deployment with `deployViaProxy` for upgradeable contracts.
-- **Universal Deploy Scripts**: Thanks to rocketh, the deploy script can run in any environment, nide, browser, etc...
+- **Universal Deploy Scripts**: Thanks to rocketh, the deploy script can run in any environment, node, browser, etc...
 
 ### Monorepo Structure
 
