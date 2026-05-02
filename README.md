@@ -383,7 +383,7 @@ Since this is a monorepo, you can easily add a web frontend:
   import GreetingsRegistry from "template-ethereum-contracts/deployments/sepolia/GreetingsRegistry.js";
   ```
 
-- or event Deploy Scripts
+- or even Deploy Scripts
   ```typescript skip
   import DeployScript from "template-ethereum-contracts/deploy/001_deploy_greetings_registry.js";
   ```
