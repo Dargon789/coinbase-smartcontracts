@@ -1,41 +1,40 @@
-name: Hardhat Pipeline
-on: [push, pull_request]
+name: CI
+ 
+on:
+  push:
+    branches: [master]
+  pull_request:
+ 
 permissions:
   contents: read
+ 
 env:
-  DEBUG: '@tenderly/github-action'
-  ## Needed available as env variables for Hardhat.config.js
-  TENDERLY_PROJECT_NAME: ${{ vars.TENDERLY_PROJECT_NAME }}
-  TENDERLY_ACCOUNT_NAME: ${{ vars.TENDERLY_ACCOUNT_NAME }}
+  FOUNDRY_PROFILE: ci
+ 
 jobs:
-  test:
+  check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
- 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          submodules: recursive
  
-      - name: Setup Virtual TestNet
-        uses: Tenderly/vnet-github-action@v1.0.6
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
         with:
-          access_key: ${{ secrets.TENDERLY_ACCESS_KEY }}
-          project_name: ${{ vars.TENDERLY_PROJECT_NAME }}
-          account_name: ${{ vars.TENDERLY_ACCOUNT_NAME }}
-          testnet_name: "Staging TestNet"
-          network_id: 1
-          chain_id: 1
-          state_sync: true
-          public_explorer: true
-          verification_visibility: bytecode
+          cache: true
  
-      - name: Install dependencies
-        run: npm ci
-        working-directory: examples/Hardhat-ignition
+      - name: Check formatting
+        run: forge fmt --check
  
-      - name: Run Tests
-        run: npm run test:vnet
-        working-directory: examples/Hardhat-ignition
+      - name: Run linter
+        run: forge lint
+ 
+      - name: Build
+        run: forge build
+ 
+      - name: Run tests
+        run: forge test -vvv
+ 
+      - name: Check gas snapshots
+        run: forge snapshot --check

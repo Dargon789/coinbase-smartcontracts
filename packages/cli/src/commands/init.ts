@@ -22,7 +22,7 @@ export type Init = {
 
 const Init = z.object({
   config: z.string().optional(),
-  content: z.object({}).optional(),
+  content: z.any().optional(),
   root: z.string().optional(),
 })
 

@@ -40,7 +40,7 @@ catalog:
   porto: 0.2.35
   react: 19.2.0
   react-dom: 19.2.0
-  vite: 7.2.2
+  vite: 8.0.5
   vue: 3.4.27
 
 linkWorkspacePackages: deep
@@ -62,8 +62,16 @@ minimumReleaseAgeExclude:
   - viem
 
 onlyBuiltDependencies:
+  - bufferutil
+  - cpu-features
   - esbuild
+  - msw
+  - protobufjs
   - sharp
+  - simple-git-hooks
+  - ssh2
+  - utf-8-validate
+  - vue-demi
   - workerd
 
 overrides:
@@ -98,3 +106,4 @@ trustPolicyExclude:
   - semver@6.3.1
   - undici@6.22.0
   - vite@5.4.21
+  - "contracts"
