@@ -12,7 +12,7 @@ export default execute(
 
 		const prefix = 'proxy:';
 		await deployViaProxy(
-			'GreetingsRegistryFromImport',
+			'UniversalResolver',
 			{
 				account: deployer,
 				artifact: artifacts.UniversalResolver,
