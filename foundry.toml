@@ -1,5 +1,5 @@
 [profile.default]
-solc = "0.8.25"
+solc = "0.8.18"
 block_base_fee_per_gas = 0
 block_coinbase = "0x0000000000000000000000000000000000000000"
 block_difficulty = 0
@@ -24,7 +24,7 @@ ignored_error_codes = [1878]
 deny_warnings = false
 initial_balance = "0xffffffffffffffffffffffff"
 libraries = []
-libs = ["node_modules", "lib"]
+libs = ["lib"]
 names = false
 no_storage_caching = false
 no_rpc_rate_limit = false
