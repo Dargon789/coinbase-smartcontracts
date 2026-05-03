@@ -1,5 +1,4 @@
 name: Sovereign Asset Sync
-
 permissions:
   contents: read
 
