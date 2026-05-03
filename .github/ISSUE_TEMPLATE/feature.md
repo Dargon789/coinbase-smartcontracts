@@ -1,7 +1,7 @@
 ---
 name: 🚀 Feature request
 about: If you have a feature request 💡
-title: "[FEATURE NAME]"
+title: "[FEAT]: "
 labels: enhancement, help wanted
 ---
 
