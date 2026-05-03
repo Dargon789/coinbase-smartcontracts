@@ -72,7 +72,7 @@ pnpm test
 forge test
 ```
 
-This assumes you have `forge` installed and that you added forge-std in via the following command
+This assumes you have `forge` installed and that you added forge-std via the following command
 
 ```bash
 git clone --recursive https://github.com/foundry-rs/forge-std.git lib/forge-std
